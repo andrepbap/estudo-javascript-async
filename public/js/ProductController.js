@@ -14,7 +14,18 @@ class ProductController {
     }
 
     getProduct(productId) {
+        let productDAO = new ProductDAO();
+        let sellerDAO = new SellerDAO();
 
+        productDAO.getProduct(productId, product => {
+            sellerDAO.getSeller(product.sellerId, seller => {
+
+                console.log(product);
+                console.log(seller);
+
+                this._render(product)
+            });
+        });
     }
 
     _render(data) {

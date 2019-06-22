@@ -4,12 +4,10 @@ class ProductDAO {
         this._url = "http://localhost:3000/";
     }
 
-    getProduct(id) {
+    getProduct(id, callback) {
         
-        return new Promise((resolve, reject) => {
-            $.get(this._url + "product/" + id, function(data, status) {
-                resolve(data);
-            });
+        $.get(this._url + "product/" + id, function(data, status) {
+            callback(data);
         });
     }
 
