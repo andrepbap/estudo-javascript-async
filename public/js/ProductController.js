@@ -9,20 +9,25 @@ class ProductController {
         this._price = $("#price");
     }
 
-    getProduct(productId, sellerId) {
+    getProduct(productId) {
         let productDAO = new ProductDAO();
         let sellerDAO = new SellerDAO();
 
-        let promises = [
-            productDAO.getProduct(productId),
-            sellerDAO.getSeller(sellerId)
-        ];
+        async function request() {
+            let product = await productDAO.getProduct(productId);
+            let seller = await sellerDAO.getSeller(product.sellerId);
 
-        Promise.all(promises).then(data => {
+            return {
+                product: product,
+                seller: seller
+            }
+        }
+
+        request().then(data => {
             console.log(data);
-
-            this._render(data[0]);
+            this._render(data.product);
         });
+
     }
 
     _render(data) {

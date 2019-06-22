@@ -3,7 +3,7 @@ module.exports = function (app) {
     app.route("/product/:id").get((req, res) => {
         let product = {
             id: req.params.id,
-            seller: 100,
+            sellerId: 100,
             name: "Gato Emulado",
             price: "R$ 200,00",
             description: "Lindo gato emulado.",
