@@ -23,15 +23,18 @@ class ProductController {
                 console.log(product);
                 console.log(seller);
 
-                this._render(product)
+                this._render({
+                    product: product,
+                    seller: seller
+                });
             });
-        });
+        }); 
     }
 
     _render(data) {
         this._name.innerHTML = data.product.name;
         this._img.src = data.product.image_url;
-        this._description.innerHTML = data.productdescription;
+        this._description.innerHTML = data.product.description;
         this._price.innerHTML = data.product.price;
         this._sellerName.innerHTML = data.seller.name;
         this._sellerAvatar.src = data.seller.image_url;
