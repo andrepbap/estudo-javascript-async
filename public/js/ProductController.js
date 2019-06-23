@@ -11,27 +11,23 @@ class ProductController {
         this._sellerName = $("#sellerName");
         this._sellerAvatar = $("#sellerAvatar");
         this._sellerDescription = $("#sellerDescription");
-    }
 
-    getProduct(productId) {
-        let productDAO = new ProductDAO();
-        let sellerDAO = new SellerDAO();
-
-        async function request() {
-            let product = await productDAO.getProduct(productId);
-            let seller = await sellerDAO.getSeller(product.sellerId);
+        this.request = async function request(productId) {
+            let product = await new ProductDAO().getProduct(productId);
+            let seller = await new SellerDAO().getSeller(product.sellerId);
 
             return {
                 product: product,
                 seller: seller
             }
         }
+    }
 
-        request().then(data => {
+    getProduct(productId) {
+        this.request(productId).then(data => {
             console.log(data);
             this._render(data);
         });
-
     }
 
     _render(data) {
