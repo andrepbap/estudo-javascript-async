@@ -13,6 +13,19 @@ module.exports = function (app) {
         res.send(product);
     });
 
+    app.route("/product/:id").post((req, res) => {
+        
+        let requestItens = {
+            params: req.params,
+            headers: req.headers,
+            body: req.body
+        };
+
+        console.log(requestItens);
+
+        res.send({response: "response"});
+    });
+
 };
 
 
