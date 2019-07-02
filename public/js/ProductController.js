@@ -19,7 +19,7 @@ class ProductController {
 
         async function request() {
             let product = await productDAO.getProduct(productId);
-            let seller = await sellerDAO.getSeller(product.sellerId);
+            let seller = await sellerDAO.getSeller(product.seller);
 
             return {
                 product: product,
