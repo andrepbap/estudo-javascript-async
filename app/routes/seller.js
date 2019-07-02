@@ -5,7 +5,7 @@ module.exports = function (app) {
             id: req.params.id,
             name: "Tully Vendedor",
             description: "Loja de produtos emulados",
-            image_url: "https://img.elo7.com.br/product/main/26B18C0/teste-nao-comprar-18-jhkhjkq.jpg"
+            image_url: app.get("img-url") + "gato-emulado.jpg"
         };
 
         res.send(product);
