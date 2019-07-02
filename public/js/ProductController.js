@@ -18,7 +18,7 @@ class ProductController {
         let sellerDAO = new SellerDAO();
 
         productDAO.getProduct(productId, product => {
-            sellerDAO.getSeller(product.sellerId, seller => {
+            sellerDAO.getSeller(product.seller, seller => {
 
                 console.log(product);
                 console.log(seller);
