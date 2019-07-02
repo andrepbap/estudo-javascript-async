@@ -5,6 +5,8 @@ const PORTA = 3000;
 
 var server = http.createServer(app)
         .listen(PORTA, function () {
-            console.log('Servidor iniciado em ' + ip.address() + ':' + PORTA);
+            let serverUrl = 'http://' + ip.address() + ':' + PORTA;
+            console.log('Servidor iniciado em ' + serverUrl);
+            console.log('Produto exemplo: ' + serverUrl + '/static/product.html');
         });
 
